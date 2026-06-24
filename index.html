@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VitaGreen – Thực phẩm chức năng & Vitamin thiên nhiên chính hãng. Nâng cao sức khỏe toàn diện cho cả gia đình bạn." />
+  <meta name="keywords" content="thực phẩm chức năng, vitamin, bổ sung sức khỏe, thảo dược, vitagreen" />
+  <meta name="author" content="VitaGreen Pharma" />
+  <meta property="og:title" content="VitaGreen – Sức Khỏe Từ Thiên Nhiên" />
+  <meta property="og:description" content="Thực phẩm chức năng & Vitamin thiên nhiên chính hãng." />
+  <meta property="og:type" content="website" />
+  <title>VitaGreen – Sức Khỏe Từ Thiên Nhiên</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --green-deep:   #1a4a2e;
+      --green-mid:    #2d7a4f;
+      --green-light:  #4caf78;
+      --green-pale:   #e8f5ee;
+      --green-mint:   #f0faf4;
+      --gold:         #c8a84b;
+      --gold-light:   #f0e6c0;
+      --text-dark:    #1a1a1a;
+      --text-mid:     #444;
+      --text-soft:    #777;
+      --white:        #ffffff;
+      --border:       #d4e8db;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --shadow-sm: 0 2px 8px rgba(26,74,46,.08);
+      --shadow-md: 0 8px 32px rgba(26,74,46,.14);
+      --shadow-lg: 0 20px 60px rgba(26,74,46,.18);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== COOKIE CONSENT ===== */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: var(--green-deep);
+      color: var(--white);
+      padding: 18px 24px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      box-shadow: 0 -4px 24px rgba(0,0,0,.25);
+      transform: translateY(0); transition: transform .4s ease;
+    }
+    #cookie-banner.hidden { transform: translateY(110%); }
+    #cookie-banner p { flex: 1; min-width: 200px; font-size: .9rem; line-height: 1.5; }
+    #cookie-banner a { color: var(--green-light); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-cookie-accept {
+      background: var(--green-light); color: var(--white);
+      border: none; padding: 10px 22px; border-radius: 50px;
+      font-weight: 600; cursor: pointer; font-size: .9rem;
+      transition: background .2s;
+    }
+    .btn-cookie-accept:hover { background: var(--gold); }
+    .btn-cookie-decline {
+      background: transparent; color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.3); padding: 10px 22px;
+      border-radius: 50px; cursor: pointer; font-size: .9rem;
+      transition: all .2s;
+    }
+    .btn-cookie-decline:hover { border-color: var(--white); color: var(--white); }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--green-deep);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--green-deep);
+      font-weight: 900;
+    }
+    .nav-logo-text span { color: var(--green-light); }
+    .nav-links {
+      display: flex; gap: 32px; align-items: center;
+    }
+    .nav-links a {
+      font-size: .9rem; font-weight: 500;
+      color: var(--text-mid);
+      position: relative; padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: var(--green-mid);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-links a:hover { color: var(--green-mid); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: var(--green-mid); color: var(--white) !important;
+      padding: 10px 22px; border-radius: 50px;
+      font-weight: 600 !important; font-size: .88rem !important;
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--green-deep) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--green-deep); border-radius: 2px;
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      flex-direction: column; gap: 16px;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--text-mid); padding: 8px 0; }
+    .mobile-menu .nav-cta { text-align: center; padding: 12px; }
+
+    /* ===== SECTIONS COMMON ===== */
+    section { padding: 80px 24px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--green-mid);
+      background: var(--green-pale); border-radius: 50px;
+      padding: 5px 16px; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--green-deep);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--text-soft);
+      max-width: 560px; line-height: 1.7;
+    }
+    .section-header { margin-bottom: 52px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ===== HERO ===== */
+    #home {
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--green-deep) 0%, #0e3320 40%, #1a5c36 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(76,175,120,.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(200,168,75,.08) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(76,175,120,.1) 0%, transparent 40%);
+    }
+    /* Animated leaf shapes */
+    .leaf {
+      position: absolute;
+      border-radius: 50% 0 50% 0;
+      opacity: .06;
+      animation: floatLeaf 8s ease-in-out infinite;
+    }
+    .leaf:nth-child(1) { width:200px;height:200px;background:var(--green-light);top:10%;left:5%;animation-delay:0s; }
+    .leaf:nth-child(2) { width:140px;height:140px;background:var(--gold);top:60%;right:8%;animation-delay:2s; }
+    .leaf:nth-child(3) { width:100px;height:100px;background:var(--green-light);top:30%;right:20%;animation-delay:4s; }
+    @keyframes floatLeaf {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1160px; margin: 0 auto;
+      padding: 120px 24px 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(76,175,120,.2);
+      border: 1px solid rgba(76,175,120,.3);
+      color: var(--green-light);
+      padding: 7px 16px; border-radius: 50px;
+      font-size: .82rem; font-weight: 600; letter-spacing: .05em;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: '●'; font-size: .6rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--green-light);
+      position: relative;
+    }
+    .hero-title em::after {
+      content: '';
+      position: absolute; bottom: 4px; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+      border-radius: 2px;
+    }
+    .hero-desc {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem; line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-light); color: var(--white);
+      padding: 15px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      transition: all .25s; box-shadow: 0 4px 20px rgba(76,175,120,.4);
+    }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,168,75,.5); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid rgba(255,255,255,.4); color: var(--white);
+      padding: 13px 28px; border-radius: 50px;
+      font-weight: 600; font-size: 1rem;
+      transition: all .25s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 44px; padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-item { text-align: left; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 900;
+      color: var(--green-light);
+    }
+    .stat-label { font-size: .8rem; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .hero-visual { position: relative; }
+    .hero-img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, #2d7a4f, #1a4a2e);
+      background-image: url("reward.jpg");
+	  background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-img-placeholder {
+		display: none;
+      text-align: center; color: rgba(255,255,255,.5); padding: 40px;
+    }
+    .hero-img-placeholder .icon { font-size: 5rem; margin-bottom: 16px; }
+    .hero-img-placeholder p { font-size: .9rem; }
+    .hero-pill {
+      position: absolute;
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 12px 18px; box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-pill-1 { bottom: -20px; left: -30px; }
+    .hero-pill-2 { top: -16px; right: -24px; }
+    .hero-pill .pill-icon { font-size: 1.4rem; }
+    .hero-pill .pill-text { font-size: .75rem; line-height: 1.4; }
+    .hero-pill .pill-text strong { display: block; color: var(--green-deep); font-weight: 700; }
+    .hero-pill .pill-text span { color: var(--text-soft); }
+
+    /* ===== BEFORE / AFTER ===== */
+    #before-after { background: var(--green-mint); }
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+    .ba-card { padding: 48px 40px; position: relative; overflow: hidden; }
+    .ba-card.before { background: #f5f0f0; }
+    .ba-card.after { background: var(--green-deep); color: var(--white); }
+    .ba-label {
+      font-size: .75rem; font-weight: 800; letter-spacing: .15em;
+      text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ba-card.before .ba-label { color: #c0392b; }
+    .ba-card.after .ba-label { color: var(--green-light); }
+    .ba-card.before .ba-label::before { content: '✕'; font-size: 1rem; }
+    .ba-card.after .ba-label::before { content: '✓'; font-size: 1rem; }
+    .ba-list { display: flex; flex-direction: column; gap: 16px; }
+    .ba-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .95rem; line-height: 1.5;
+    }
+    .ba-icon { font-size: 1.1rem; margin-top: 1px; flex-shrink: 0; }
+    .ba-card.before .ba-item { color: #555; }
+    .ba-card.after .ba-item { color: rgba(255,255,255,.9); }
+    .ba-brain-note {
+      margin-top: 32px; padding: 16px 20px;
+      background: rgba(76,175,120,.15);
+      border-left: 3px solid var(--green-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: .88rem; color: rgba(255,255,255,.8);
+      font-style: italic;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-img-frame {
+      position: relative; border-radius: var(--radius-lg); overflow: visible;
+    }
+    .about-img-main {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--green-pale), var(--green-mint));
+	  background-image: url("story.jpg");
+	  background-size: cover;
+	  background-position: center;
+      aspect-ratio: 4/5; display: flex; align-items: center;
+      justify-content: center; font-size: 6rem;
+      box-shadow: var(--shadow-md);
+    }
+    .about-badge-float {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gold); color: var(--white);
+      border-radius: var(--radius-md); padding: 18px 22px;
+      text-align: center; box-shadow: var(--shadow-md);
+    }
+    .about-badge-float .num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; }
+    .about-badge-float .txt { font-size: .75rem; font-weight: 600; opacity: .9; }
+    .about-text .section-sub { max-width: 100%; margin-bottom: 24px; }
+    .maslow-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .maslow-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 18px; background: var(--green-mint);
+      border-radius: var(--radius-sm); border-left: 3px solid var(--green-light);
+    }
+    .maslow-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .maslow-item p { font-size: .9rem; color: var(--text-mid); line-height: 1.5; }
+    .maslow-item strong { color: var(--green-deep); }
+
+    /* ===== PRODUCTS ===== */
+    #products { background: var(--green-mint); }
+    .products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .product-card-link { display: block; }
+    .product-footer { gap: 8px; flex-wrap: wrap; }
+    .btn-detail {
+      background: transparent; color: var(--green-mid); border: 1.5px solid var(--green-mid);
+      padding: 8px 16px; border-radius: 50px; font-size: .82rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, color .2s;
+    }
+    .btn-detail:hover { background: var(--green-mid); color: var(--white); }
+    .product-img-icon { font-size: 3.4rem; }
+    .products-loadmore { text-align: center; margin-top: 36px; }
+    .btn-loadmore {
+      background: var(--white); color: var(--green-deep); border: 1.5px solid var(--green-mid);
+      padding: 12px 30px; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: .9rem;
+      transition: background .2s, color .2s;
+    }
+    .btn-loadmore:hover { background: var(--green-mid); color: var(--white); }
+    @media (max-width: 1020px) { .products-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 580px) { .products-grid { grid-template-columns: 1fr; } }
+    .product-card {
+      background: var(--white); border-radius: var(--radius-md);
+      overflow: hidden; box-shadow: var(--shadow-sm);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .product-badge {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      background: var(--gold); color: var(--white);
+      font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .product-img {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--green-pale), var(--green-mint));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative; overflow: hidden;
+    }
+    .product-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(26,74,46,.08) 0%, transparent 60%);
+    }
+    .product-body { padding: 22px 22px 26px; }
+    .product-category {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green-mid); margin-bottom: 6px;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--green-deep); margin-bottom: 10px;
+    }
+    .product-desc { font-size: .88rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 16px; }
+    .product-benefits { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .benefit-tag {
+      background: var(--green-pale); color: var(--green-deep);
+      font-size: .72rem; font-weight: 600; padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--green-mid); }
+    .product-price span { font-family: var(--font-body); font-size: .75rem; color: var(--text-soft); font-weight: 400; display: block; margin-top: 1px; }
+    .btn-buy {
+      background: var(--green-mid); color: var(--white);
+      border: none; padding: 9px 18px; border-radius: 50px;
+      font-size: .85rem; font-weight: 700; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .btn-buy:hover { background: var(--green-deep); transform: scale(1.03); }
+    .product-table-wrap { margin-top: 56px; overflow-x: auto; }
+    .product-table-wrap h3 {
+      font-family: var(--font-display); font-size: 1.4rem;
+      color: var(--green-deep); margin-bottom: 20px; text-align: center;
+    }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: var(--white); border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    th {
+      background: var(--green-deep); color: var(--white);
+      font-size: .85rem; font-weight: 600; letter-spacing: .04em;
+      text-align: left; padding: 14px 18px;
+    }
+    td { padding: 13px 18px; font-size: .88rem; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--green-mint); }
+    .td-check { color: var(--green-mid); font-weight: 700; font-size: 1rem; }
+
+    /* ===== BLOG ===== */
+    #blog { background: var(--white); }
+    .blog-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; }
+    .blog-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .blog-img {
+      aspect-ratio: 16/8;
+      background: linear-gradient(135deg, var(--green-pale), var(--green-mint));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; position: relative;
+    }
+    .blog-tag {
+      position: absolute; bottom: 12px; left: 16px;
+      background: var(--green-mid); color: var(--white);
+      font-size: .72rem; font-weight: 700; padding: 3px 12px;
+      border-radius: 50px;
+    }
+    .blog-body { padding: 24px; }
+    .blog-meta { display: flex; gap: 16px; font-size: .78rem; color: var(--text-soft); margin-bottom: 12px; }
+    .blog-meta span::before { margin-right: 4px; }
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700; color: var(--green-deep);
+      line-height: 1.35; margin-bottom: 12px;
+    }
+    .blog-excerpt { font-size: .9rem; color: var(--text-soft); line-height: 1.65; margin-bottom: 18px; }
+    .blog-seo-tips { background: var(--green-mint); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 18px; }
+    .blog-seo-tips p { font-size: .78rem; color: var(--green-deep); font-weight: 600; }
+    .blog-seo-tips ul { padding-left: 16px; list-style: disc; margin-top: 4px; }
+    .blog-seo-tips li { font-size: .75rem; color: var(--text-mid); line-height: 1.6; }
+    .btn-read {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .88rem; font-weight: 700; color: var(--green-mid);
+      transition: gap .2s;
+    }
+    .btn-read:hover { gap: 10px; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--green-mint); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-info h3 {
+      font-family: var(--font-display); font-size: 1.5rem;
+      color: var(--green-deep); margin-bottom: 18px;
+    }
+    .contact-info p { color: var(--text-soft); margin-bottom: 28px; line-height: 1.7; }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 18px; background: var(--white);
+      border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);
+    }
+    .contact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .contact-item div strong { display: block; font-size: .82rem; font-weight: 700; color: var(--green-deep); }
+    .contact-item div span { font-size: .88rem; color: var(--text-mid); }
+    .map-embed {
+      border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-sm); margin-top: 16px;
+    }
+    .map-embed iframe { width: 100%; height: 220px; border: none; display: block; }
+    .contact-form-wrap {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 36px; box-shadow: var(--shadow-md);
+    }
+    .contact-form-wrap h3 {
+      font-family: var(--font-display); font-size: 1.4rem;
+      color: var(--green-deep); margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: .85rem; font-weight: 600; color: var(--text-dark); }
+    .form-group label span { color: #c0392b; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-family: var(--font-body);
+      font-size: .92rem; color: var(--text-dark);
+      transition: border-color .2s, box-shadow .2s;
+      background: var(--white); width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none; border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px rgba(45,122,79,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-check { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; }
+    .form-check input[type=checkbox] { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--green-mid); flex-shrink: 0; }
+    .form-check label { font-size: .85rem; color: var(--text-soft); line-height: 1.5; }
+    .form-check label a { color: var(--green-mid); text-decoration: underline; }
+    .btn-submit {
+      width: 100%; background: var(--green-mid); color: var(--white);
+      border: none; padding: 15px; border-radius: 50px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .btn-submit:hover { background: var(--green-deep); transform: translateY(-1px); }
+    .form-success {
+      display: none; text-align: center; padding: 24px;
+      color: var(--green-mid); font-weight: 600;
+    }
+    .form-success .tick { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+
+    /* ===== QR CODE SECTION ===== */
+    #qr-offers { background: var(--green-deep); padding: 60px 24px; }
+    .qr-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center;
+    }
+    .qr-text h2 {
+      font-family: var(--font-display); font-size: 2rem;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .qr-text p { color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 20px; }
+    .qr-cards { display: flex; flex-direction: column; gap: 16px; }
+    .qr-card {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-md); padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .qr-card-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .qr-card-text strong { display: block; color: var(--white); font-size: .95rem; }
+    .qr-card-text span { color: rgba(255,255,255,.6); font-size: .82rem; }
+    .qr-main {
+      text-align: center;
+    }
+    .qr-code-box {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 20px; display: inline-flex; flex-direction: column;
+      align-items: center; gap: 12px; box-shadow: var(--shadow-lg);
+    }
+    /* QR code SVG – generated pattern */
+    .qr-svg { width: 180px; height: 180px; background-image: url("qr.png"); background-size: cover;}
+    .qr-caption { font-size: .8rem; color: var(--text-soft); font-weight: 600; letter-spacing: .04em; }
+    .qr-cta { margin-top: 16px; }
+    .qr-cta p { color: rgba(255,255,255,.6); font-size: .85rem; text-align: center; }
+    .qr-discount-badge {
+      margin-top: 10px;
+      background: var(--gold); color: var(--white);
+      padding: 10px 24px; border-radius: 50px;
+      font-weight: 800; font-size: 1.1rem; display: inline-block;
+    }
+
+    /* ===== PRIVACY POLICY ===== */
+    #privacy { background: var(--white); }
+    .policy-wrap {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 48px;
+      box-shadow: var(--shadow-sm); max-width: 800px; margin: 0 auto;
+    }
+    .policy-wrap h2 { font-family: var(--font-display); font-size: 1.8rem; color: var(--green-deep); margin-bottom: 8px; }
+    .policy-date { font-size: .82rem; color: var(--text-soft); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .policy-section { margin-bottom: 28px; }
+    .policy-section h3 { font-size: 1rem; font-weight: 700; color: var(--green-deep); margin-bottom: 10px; }
+    .policy-section p,
+    .policy-section li { font-size: .9rem; color: var(--text-mid); line-height: 1.75; }
+    .policy-section ul { padding-left: 20px; list-style: disc; }
+    .policy-section ul li { margin-bottom: 4px; }
+    .gdpr-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-pale); color: var(--green-deep);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: .8rem; font-weight: 700; margin-bottom: 20px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--green-deep); color: rgba(255,255,255,.75);
+      padding: 60px 24px 32px;
+    }
+    .footer-grid {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo-text { color: var(--white); font-size: 1.5rem; margin-bottom: 14px; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; opacity: .7; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: background .2s; cursor: pointer;
+    }
+    .social-btn:hover { background: var(--green-light); }
+    .footer-col h4 { color: var(--white); font-size: .9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: .04em; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: .85rem; opacity: .7; transition: opacity .2s; }
+    .footer-col ul li a:hover { opacity: 1; color: var(--green-light); }
+    .footer-bottom {
+      max-width: 1160px; margin: 0 auto;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+    }
+    .footer-bottom p { font-size: .8rem; opacity: .5; }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: .8rem; opacity: .5; transition: opacity .2s; }
+    .footer-bottom-links a:hover { opacity: 1; }
+
+    /* ===== SCROLL TO TOP ===== */
+    #scrollTop {
+      position: fixed; bottom: 80px; right: 24px; z-index: 998;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green-mid); color: var(--white);
+      border: none; cursor: pointer; font-size: 1.2rem;
+      box-shadow: var(--shadow-md); display: none;
+      align-items: center; justify-content: center;
+      transition: background .2s, transform .2s;
+    }
+    #scrollTop.visible { display: flex; }
+    #scrollTop:hover { background: var(--green-deep); transform: translateY(-2px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { max-width: 400px; margin: 0 auto; }
+      .products-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .qr-inner { grid-template-columns: 1fr; }
+      .qr-main { order: -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 60px 20px; }
+      .about-grid, .contact-grid, .ba-grid { grid-template-columns: 1fr; }
+      .ba-card { padding: 32px 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-pill { display: none; }
+      .policy-wrap { padding: 28px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, .leaf { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== COOKIE CONSENT ===== -->
+<div id="cookie-banner" role="alertdialog" aria-label="Thông báo Cookie">
+  <p>
+    🍪 Chúng tôi sử dụng cookie để cải thiện trải nghiệm của bạn và phân tích lưu lượng truy cập.
+    Xem thêm tại <a href="#privacy">Chính sách bảo mật</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="btn-cookie-accept" onclick="acceptCookies()">Chấp nhận tất cả</button>
+    <button class="btn-cookie-decline" onclick="declineCookies()">Chỉ cần thiết</button>
+  </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <span class="nav-logo-text">Vita<span>Green</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Trang chủ</a></li>
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#products">Sản phẩm</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+    <li><a href="#contact" class="nav-cta">Tư vấn miễn phí</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">🏠 Trang chủ</a>
+  <a href="#about" onclick="closeMenu()">🌿 Giới thiệu</a>
+  <a href="#products" onclick="closeMenu()">💊 Sản phẩm</a>
+  <a href="#blog" onclick="closeMenu()">📝 Blog</a>
+  <a href="#contact" onclick="closeMenu()">📞 Liên hệ</a>
+  <a href="#contact" onclick="closeMenu()" class="nav-cta">Tư vấn miễn phí</a>
+</div>
+
+<!-- ===== HERO / HOME ===== -->
+<section id="home">
+  <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">Chính hãng · Kiểm định bởi Bộ Y tế</div>
+      <h1 class="hero-title">
+        Sức khoẻ bền vững<br>
+        từ <em>thiên nhiên thuần khiết</em>
+      </h1>
+      <p class="hero-desc">
+        VitaGreen mang đến dòng thực phẩm chức năng và vitamin cao cấp, chiết xuất 100% từ thảo dược tự nhiên.
+        Được hơn <strong style="color:var(--green-light)">50.000 gia đình</strong> Việt Nam tin dùng mỗi ngày.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">🛒 Xem sản phẩm</a>
+        <a href="#about" class="btn-outline">▶ Câu chuyện của chúng tôi</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50K+</div>
+          <div class="stat-label">Khách hàng tin dùng</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Năm kinh nghiệm</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Hài lòng sau 30 ngày</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-placeholder">
+          <div class="icon">🌿</div>
+          <p>Hình ảnh sản phẩm<br><small style="opacity:.5">(1200×1500px – Facebook/Google Ads)</small></p>
+        </div>
+      </div>
+      <div class="hero-pill hero-pill-1">
+        <span class="pill-icon">✅</span>
+        <div class="pill-text">
+          <strong>ISO 22000:2018</strong>
+          <span>Chứng nhận quốc tế</span>
+        </div>
+      </div>
+      <div class="hero-pill hero-pill-2">
+        <span class="pill-icon">🏆</span>
+        <div class="pill-text">
+          <strong>Top 10 thương hiệu</strong>
+          <span>Uy tín Việt Nam 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER (Ba não + AIDA) ===== -->
+<section id="before-after">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Sự thay đổi thực sự</div>
+      <h2 class="section-title">Cuộc sống của bạn<br>sẽ thay đổi như thế nào?</h2>
+      <p class="section-sub">Đây là sự khác biệt mà hàng nghìn khách hàng VitaGreen đã trải nghiệm sau 30 ngày sử dụng.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <div class="ba-label">Trước khi dùng VitaGreen</div>
+        <ul class="ba-list">
+          <li class="ba-item"><span class="ba-icon">😴</span><span>Mệt mỏi, uể oải suốt ngày dù đã ngủ đủ giấc</span></li>
+          <li class="ba-item"><span class="ba-icon">🤒</span><span>Sức đề kháng yếu, dễ ốm vặt khi thời tiết thay đổi</span></li>
+          <li class="ba-item"><span class="ba-icon">🧠</span><span>Khó tập trung, hay quên, năng suất làm việc giảm sút</span></li>
+          <li class="ba-item"><span class="ba-icon">😟</span><span>Lo lắng về sức khoẻ nhưng không biết bắt đầu từ đâu</span></li>
+          <li class="ba-item"><span class="ba-icon">💸</span><span>Chi phí thuốc thang, bác sĩ tốn kém mà không dứt điểm</span></li>
+        </ul>
+      </div>
+      <div class="ba-card after">
+        <div class="ba-label">Sau 30 ngày dùng VitaGreen</div>
+        <ul class="ba-list">
+          <li class="ba-item"><span class="ba-icon">⚡</span><span>Tràn đầy năng lượng, sảng khoái từ sáng đến tối</span></li>
+          <li class="ba-item"><span class="ba-icon">🛡️</span><span>Hệ miễn dịch vững mạnh, kháng bệnh hiệu quả</span></li>
+          <li class="ba-item"><span class="ba-icon">🎯</span><span>Tập trung rõ rệt, trí nhớ cải thiện, làm việc hiệu quả hơn</span></li>
+          <li class="ba-item"><span class="ba-icon">😌</span><span>An tâm về sức khoẻ, sống tự tin và vui vẻ mỗi ngày</span></li>
+          <li class="ba-item"><span class="ba-icon">💰</span><span>Tiết kiệm chi phí y tế nhờ phòng bệnh chủ động</span></li>
+        </ul>
+        <div class="ba-brain-note">
+          💡 <em>"Não bộ bò sát trong bạn đang ra quyết định ngay lúc này – bạn chọn tiếp tục mệt mỏi hay thay đổi?"</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-frame">
+        <div class="about-img-main"></div>
+        <div class="about-badge-float">
+          <div class="num">2012</div>
+          <div class="txt">Thành lập</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Câu chuyện thương hiệu</div>
+        <h2 class="section-title">Sinh ra từ nỗi lo<br>của một người mẹ</h2>
+        <p class="section-sub">
+          Năm 2012, dược sĩ Nguyễn Thị Lan đã chứng kiến con gái nhỏ của mình ốm liên miên vì thiếu vi chất.
+          Từ nỗi lo đó, bà quyết tâm nghiên cứu và tạo ra VitaGreen – dòng thực phẩm chức năng an toàn tuyệt đối
+          cho cả gia đình, từ trẻ nhỏ đến người cao tuổi.
+        </p>
+        <ul class="maslow-list">
+          <li class="maslow-item">
+            <span class="maslow-icon">🔒</span>
+            <p><strong>Nhu cầu An toàn (Maslow):</strong> Mọi sản phẩm đều qua kiểm định 3 lớp độc lập, đảm bảo không chứa chất cấm, kim loại nặng hay tạp chất.</p>
+          </li>
+          <li class="maslow-item">
+            <span class="maslow-icon">💚</span>
+            <p><strong>Nhu cầu Sinh lý:</strong> Bổ sung đầy đủ vi chất thiết yếu mà cơ thể cần mỗi ngày để vận hành tối ưu.</p>
+          </li>
+          <li class="maslow-item">
+            <span class="maslow-icon">👨‍👩‍👧</span>
+            <p><strong>Nhu cầu Thuộc về:</strong> Hơn 50.000 gia đình Việt đang dùng VitaGreen – bạn đang gia nhập một cộng đồng sống khoẻ.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Danh mục sản phẩm</div>
+      <h2 class="section-title">Thực phẩm chức năng<br>cho mọi nhu cầu</h2>
+      <p class="section-sub">Được bào chế từ nguyên liệu thiên nhiên cao cấp, đạt tiêu chuẩn GMP-WHO.</p>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- 20 sản phẩm được render động từ products-data.js -->
+    </div>
+
+    <div class="products-loadmore">
+      <button class="btn-loadmore" id="loadMoreBtn" onclick="vgToggleProducts()">Xem tất cả 20 sản phẩm ↓</button>
+    </div>
+
+    <!-- Product Table -->
+    <div class="product-table-wrap">
+      <h3>📊 So sánh các dòng sản phẩm VitaGreen</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Đối tượng</th>
+            <th>Tăng đề kháng</th>
+            <th>Hỗ trợ não</th>
+            <th>Đẹp da</th>
+            <th>Giá / hộp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Multi Daily</strong></td>
+            <td>Mọi lứa tuổi</td>
+            <td class="td-check">✓ Cao</td>
+            <td class="td-check">✓</td>
+            <td>—</td>
+            <td>320.000₫</td>
+          </tr>
+          <tr>
+            <td><strong>Omega Pro</strong></td>
+            <td>18 tuổi trở lên</td>
+            <td class="td-check">✓</td>
+            <td class="td-check">✓ Cao</td>
+            <td>—</td>
+            <td>450.000₫</td>
+          </tr>
+          <tr>
+            <td><strong>She Balance</strong></td>
+            <td>Phụ nữ 25–55</td>
+            <td>—</td>
+            <td>—</td>
+            <td class="td-check">✓ Cao</td>
+            <td>560.000₫</td>
+          </tr>
+          <tr>
+            <td><strong>Kids Grow</strong></td>
+            <td>Trẻ 3–12 tuổi</td>
+            <td class="td-check">✓ Cao</td>
+            <td class="td-check">✓</td>
+            <td>—</td>
+            <td>280.000₫</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QR CODE SECTION ===== -->
+<section id="qr-offers">
+  <div class="qr-inner">
+    <div class="qr-text">
+      <h2>Ưu đãi độc quyền<br>chỉ dành cho bạn</h2>
+      <p>Quét mã QR để nhận ngay các ưu đãi đặc biệt không tìm thấy ở bất kỳ đâu khác – chỉ dành cho khách hàng trực tiếp.</p>
+      <div class="qr-cards">
+        <div class="qr-card">
+          <span class="qr-card-icon">🎁</span>
+          <div class="qr-card-text"><strong>Giảm 20% đơn đầu tiên</strong><span>Áp dụng toàn bộ sản phẩm</span></div>
+        </div>
+        <div class="qr-card">
+          <span class="qr-card-icon">🚚</span>
+          <div class="qr-card-text"><strong>Miễn phí vận chuyển</strong><span>Toàn quốc, đơn từ 300.000₫</span></div>
+        </div>
+        <div class="qr-card">
+          <span class="qr-card-icon">💬</span>
+          <div class="qr-card-text"><strong>Tư vấn 1-1 với dược sĩ</strong><span>Hoàn toàn miễn phí</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-main">
+      <div class="qr-code-box">
+        <!-- SVG QR code pattern – decorative/representative -->
+        <svg class="qr-svg"></svg>
+        <span class="qr-caption">QUÉT ĐỂ NHẬN ƯU ĐÃI</span>
+      </div>
+      <div class="qr-cta">
+        <p>Hoặc gọi ngay</p>
+        <div class="qr-discount-badge">📞 1800 1234</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Blog sức khoẻ</div>
+      <h2 class="section-title">Kiến thức từ chuyên gia</h2>
+      <p class="section-sub">Thông tin khoa học, chuẩn SEO, giúp bạn chăm sóc sức khoẻ đúng cách.</p>
+    </div>
+    <div class="blog-grid">
+
+      <!-- Bài viết 1 (SEO + PR sản phẩm) -->
+      <article class="blog-card">
+        <div class="blog-img" style="background-image: url('bone.png'); background-size: cover;">
+          <span class="blog-tag">Vitamin & Sức khoẻ</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>📅 12/06/2025</span>
+            <span>👁️ 4.832 lượt xem</span>
+            <span>⏱️ 5 phút đọc</span>
+          </div>
+          <h2 class="blog-title">
+            Thiếu Vitamin D3 và K2 – "Kẻ thù thầm lặng" khiến bạn mệt mỏi và loãng xương sớm
+          </h2>
+          <p class="blog-excerpt">
+            Theo nghiên cứu của Viện Dinh dưỡng Quốc gia 2024, hơn 73% người Việt Nam trưởng thành thiếu Vitamin D3.
+            Đây là nguyên nhân ẩn khiến bạn dễ ốm, mệt mỏi mãn tính và suy giảm mật độ xương sau tuổi 35...
+          </p>
+          <div class="blog-seo-tips">
+            <p>🔍 Từ khóa SEO tối ưu trong bài:</p>
+            <ul>
+              <li>thiếu vitamin D3 triệu chứng</li>
+              <li>vitamin D3 K2 tác dụng</li>
+              <li>bổ sung vitamin D3 đúng cách</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-read">Đọc toàn bộ bài viết →</a>
+        </div>
+      </article>
+
+      <!-- Bài viết 2 (SEO + PR sản phẩm) -->
+      <article class="blog-card">
+        <div class="blog-img" style="background-image: url('food.png'); background-size: cover;">
+          <span class="blog-tag">Hệ miễn dịch</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>📅 05/06/2025</span>
+            <span>👁️ 3.217 lượt xem</span>
+            <span>⏱️ 7 phút đọc</span>
+          </div>
+          <h2 class="blog-title">
+            5 Dưỡng chất tăng đề kháng mùa mưa mà bác sĩ khuyên dùng hàng đầu năm 2025
+          </h2>
+          <p class="blog-excerpt">
+            Mùa mưa là thời điểm các bệnh hô hấp, cúm và rối loạn tiêu hóa tăng đột biến. Dược sĩ Nguyễn Lan
+            – chuyên gia 15 năm kinh nghiệm – chia sẻ 5 dưỡng chất cốt lõi giúp hệ miễn dịch hoạt động ở trạng thái tốt nhất...
+          </p>
+          <div class="blog-seo-tips">
+            <p>🔍 Từ khóa SEO tối ưu trong bài:</p>
+            <ul>
+              <li>tăng đề kháng mùa mưa</li>
+              <li>thực phẩm chức năng tăng miễn dịch</li>
+              <li>vitamin C zinc echinacea</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-read">Đọc toàn bộ bài viết →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Liên hệ</div>
+      <h2 class="section-title">Chúng tôi luôn sẵn sàng<br>hỗ trợ bạn</h2>
+      <p class="section-sub">Dược sĩ của VitaGreen tư vấn miễn phí từ 8:00 – 22:00 mỗi ngày.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Thông tin liên hệ</h3>
+        <p>Liên hệ trực tiếp qua hotline, email hoặc đến văn phòng để được tư vấn sản phẩm phù hợp nhất với tình trạng sức khoẻ của bạn.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div><strong>Hotline miễn phí</strong><span>1800 1234 (8:00–22:00 hàng ngày)</span></div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div><strong>Email</strong><span>tuvan@vitagreen.vn</span></div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div><strong>Địa chỉ</strong><span>123 Nguyễn Văn Cừ, Biên Hoà, Đồng Nai</span></div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🕐</span>
+            <div><strong>Giờ làm việc</strong><span>T2 – CN: 8:00 – 22:00</span></div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.456820609506!2d106.9145!3d10.9586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d9d4f694d535%3A0x9870a24e6d7e8dff!2sBi%C3%AAn%20H%C3%B2a%2C%20%C4%90%E1%BB%93ng%20Nai!5e0!3m2!1svi!2svn!4v1700000000000"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bản đồ VitaGreen Biên Hoà">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3>📩 Gửi yêu cầu tư vấn</h3>
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Họ <span>*</span></label>
+              <input type="text" id="fname" name="fname" placeholder="Nguyễn Văn" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Tên <span>*</span></label>
+              <input type="text" id="lname" name="lname" placeholder="An" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span>*</span></label>
+            <input type="email" id="email" name="email" placeholder="ban@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" name="phone" placeholder="0901 234 567" />
+          </div>
+          <div class="form-group">
+            <label for="product">Sản phẩm quan tâm</label>
+            <select id="product" name="product">
+              <option value="">-- Chọn sản phẩm --</option>
+              <option>VitaGreen Multi Daily</option>
+              <option>VitaGreen Omega Pro</option>
+              <option>VitaGreen She Balance</option>
+              <option>VitaGreen Kids Grow</option>
+              <option>Tư vấn chung về sức khoẻ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Nội dung</label>
+            <textarea id="message" name="message" placeholder="Mô tả tình trạng sức khoẻ hoặc câu hỏi của bạn..."></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="agree" name="agree" required />
+            <label for="agree">
+              Tôi đồng ý với <a href="#privacy">Chính sách bảo mật</a> và cho phép VitaGreen liên hệ tư vấn.
+            </label>
+          </div>
+          <button type="button" class="btn-submit" onclick="submitForm()">
+            Gửi yêu cầu tư vấn 🌿
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <span class="tick">✅</span>
+          <strong>Gửi thành công!</strong><br>
+          <span style="color:var(--text-soft);font-weight:400;font-size:.9rem">Dược sĩ VitaGreen sẽ liên hệ bạn trong vòng 30 phút.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRIVACY POLICY ===== -->
+<section id="privacy">
+  <div class="container">
+    <div class="policy-wrap">
+      <div class="gdpr-badge">🔒 Tuân thủ GDPR & Nghị định 13/2023/NĐ-CP</div>
+      <h2>Chính sách Bảo mật</h2>
+      <p class="policy-date">Cập nhật lần cuối: 01/06/2025 · Phiên bản 2.1</p>
+
+      <div class="policy-section">
+        <h3>1. Giới thiệu</h3>
+        <p>VitaGreen Pharma ("chúng tôi") cam kết bảo vệ quyền riêng tư của bạn theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân của Việt Nam và Quy định Bảo vệ Dữ liệu Chung (GDPR) của Liên minh Châu Âu. Chính sách này áp dụng cho tất cả dữ liệu thu thập qua website vitagreen.vn.</p>
+      </div>
+
+      <div class="policy-section">
+        <h3>2. Dữ liệu chúng tôi thu thập</h3>
+        <ul>
+          <li><strong>Dữ liệu bạn cung cấp:</strong> Họ tên, email, số điện thoại khi điền form liên hệ hoặc đặt hàng.</li>
+          <li><strong>Dữ liệu tự động:</strong> Địa chỉ IP, loại trình duyệt, trang bạn truy cập (qua Google Analytics 4).</li>
+          <li><strong>Cookie:</strong> Cookie thiết yếu và cookie phân tích (khi bạn đồng ý).</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>3. Mục đích xử lý dữ liệu</h3>
+        <ul>
+          <li>Xử lý đơn hàng và cung cấp dịch vụ tư vấn sức khoẻ.</li>
+          <li>Phân tích hành vi người dùng để cải thiện trải nghiệm website (chỉ khi có sự đồng ý).</li>
+          <li>Gửi thông tin khuyến mãi (chỉ khi bạn đăng ký nhận email).</li>
+          <li>Tuân thủ nghĩa vụ pháp lý theo quy định của Nhà nước.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>4. Quyền của bạn (theo GDPR & Nghị định 13)</h3>
+        <ul>
+          <li><strong>Quyền truy cập:</strong> Yêu cầu bản sao dữ liệu cá nhân của bạn.</li>
+          <li><strong>Quyền chỉnh sửa:</strong> Cập nhật thông tin không chính xác.</li>
+          <li><strong>Quyền xoá ("Quyền bị lãng quên"):</strong> Yêu cầu xoá dữ liệu của bạn.</li>
+          <li><strong>Quyền phản đối:</strong> Không đồng ý với việc xử lý dữ liệu cho mục đích tiếp thị.</li>
+          <li><strong>Quyền rút lại đồng ý:</strong> Rút lại bất kỳ sự đồng ý nào đã cấp trước đó.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h3>5. Lưu trữ và bảo mật dữ liệu</h3>
+        <p>Dữ liệu được lưu trữ tại máy chủ đặt tại Việt Nam, mã hoá SSL/TLS 256-bit. Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân cho bên thứ ba vì mục đích thương mại.</p>
+      </div>
+
+      <div class="policy-section">
+        <h3>6. Cookie</h3>
+        <p>Chúng tôi sử dụng cookie thiết yếu (bắt buộc) và cookie phân tích (tùy chọn). Bạn có thể kiểm soát cookie qua banner đồng ý khi truy cập website lần đầu hoặc cài đặt trình duyệt của bạn.</p>
+      </div>
+
+      <div class="policy-section">
+        <h3>7. Liên hệ về quyền riêng tư</h3>
+        <p>Mọi yêu cầu về dữ liệu cá nhân, vui lòng liên hệ: <strong>privacy@vitagreen.vn</strong> hoặc gọi <strong>1800 1234</strong>. Chúng tôi cam kết phản hồi trong vòng 72 giờ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo-text">Vita<span style="color:var(--green-light)">Green</span></div>
+      <p>Thực phẩm chức năng & Vitamin thiên nhiên chính hãng. Chăm sóc sức khoẻ gia đình bạn từ năm 2012.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sản phẩm</h4>
+      <ul>
+        <li><a href="product.html?id=multi-daily">Multi Daily</a></li>
+        <li><a href="product.html?id=omega-pro">Omega Pro</a></li>
+        <li><a href="product.html?id=she-balance">She Balance</a></li>
+        <li><a href="product.html?id=kids-grow">Kids Grow</a></li>
+        <li><a href="#products">Xem tất cả 20 sản phẩm →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Công ty</h4>
+      <ul>
+        <li><a href="#about">Về chúng tôi</a></li>
+        <li><a href="#blog">Blog sức khoẻ</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+        <li><a href="#privacy">Chính sách bảo mật</a></li>
+        <li><a href="#">Điều khoản sử dụng</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="#">Câu hỏi thường gặp</a></li>
+        <li><a href="#">Chính sách đổi trả</a></li>
+        <li><a href="#">Hướng dẫn sử dụng</a></li>
+        <li><a href="#contact">Tư vấn miễn phí</a></li>
+        <li><a href="#">Tra cứu đơn hàng</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 VitaGreen Pharma. Thực phẩm chức năng không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.</p>
+    <div class="footer-bottom-links">
+      <a href="#privacy">Bảo mật</a>
+      <a href="#">Điều khoản</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Lên đầu trang">↑</button>
+
+<script src="products-data.js"></script>
+<script>
+  // ===== COOKIE CONSENT =====
+  (function() {
+    var consent = localStorage.getItem('vg_cookie_consent');
+    if (consent) {
+      document.getElementById('cookie-banner').classList.add('hidden');
+    }
+  })();
+  function acceptCookies() {
+    localStorage.setItem('vg_cookie_consent', 'accepted');
+    document.getElementById('cookie-banner').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('vg_cookie_consent', 'declined');
+    document.getElementById('cookie-banner').classList.add('hidden');
+  }
+
+  // ===== NAV SCROLL =====
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('navbar');
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+
+    var btn = document.getElementById('scrollTop');
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  // ===== HAMBURGER =====
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ===== FORM SUBMIT =====
+  function submitForm() {
+    var fname = document.getElementById('fname').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var agree = document.getElementById('agree').checked;
+    if (!fname || !email) {
+      alert('Vui lòng điền họ tên và email của bạn.');
+      return;
+    }
+    if (!agree) {
+      alert('Vui lòng đồng ý với Chính sách bảo mật để tiếp tục.');
+      return;
+    }
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // ===== SMOOTH SCROLL FOR LINKS =====
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 72;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ===== RENDER 20 PRODUCTS =====
+  var VG_SHOW_INITIAL = 8;
+  var vgExpanded = false;
+
+  function vgProductCard(p) {
+    var imgHtml = p.image
+      ? '<div class="product-img" style="background-image:url(\'' + p.image + '\');background-size:cover"></div>'
+      : '<div class="product-img product-img-icon">' + p.icon + '</div>';
+    var badgeHtml = p.badge
+      ? '<div class="product-badge" style="background:' + (p.badgeColor || 'var(--gold)') + '">' + p.badge + '</div>'
+      : '';
+    var benefitsHtml = p.benefits.map(function(b) { return '<span class="benefit-tag">' + b + '</span>'; }).join('');
+    return '' +
+      '<div class="product-card">' +
+        badgeHtml +
+        imgHtml +
+        '<div class="product-body">' +
+          '<div class="product-category">' + p.category + '</div>' +
+          '<div class="product-name">' + p.name + '</div>' +
+          '<p class="product-desc">' + p.desc + '</p>' +
+          '<div class="product-benefits">' + benefitsHtml + '</div>' +
+          '<div class="product-footer">' +
+            '<div class="product-price">' + vgFormatPrice(p.price) + '<span>/ ' + p.unit + '</span></div>' +
+            '<a class="btn-detail" href="product.html?id=' + p.id + '">Xem chi tiết</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function vgRenderProducts() {
+    var grid = document.getElementById('productsGrid');
+    var list = vgExpanded ? VITAGREEN_PRODUCTS : VITAGREEN_PRODUCTS.slice(0, VG_SHOW_INITIAL);
+    grid.innerHTML = list.map(vgProductCard).join('');
+  }
+
+  function vgToggleProducts() {
+    vgExpanded = !vgExpanded;
+    vgRenderProducts();
+    var btn = document.getElementById('loadMoreBtn');
+    btn.textContent = vgExpanded ? 'Thu gọn ↑' : 'Xem tất cả 20 sản phẩm ↓';
+  }
+
+  vgRenderProducts();
+</script>
+</body>
+</html>

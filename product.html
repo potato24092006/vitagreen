@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chi tiết sản phẩm VitaGreen – Thực phẩm chức năng & Vitamin thiên nhiên chính hãng." />
+  <title>Chi tiết sản phẩm – VitaGreen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep:   #1a4a2e;
+      --green-mid:    #2d7a4f;
+      --green-light:  #4caf78;
+      --green-pale:   #e8f5ee;
+      --green-mint:   #f0faf4;
+      --gold:         #c8a84b;
+      --gold-light:   #f0e6c0;
+      --text-dark:    #1a1a1a;
+      --text-mid:     #444;
+      --text-soft:    #777;
+      --white:        #ffffff;
+      --border:       #d4e8db;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --shadow-sm: 0 2px 8px rgba(26,74,46,.08);
+      --shadow-md: 0 8px 32px rgba(26,74,46,.14);
+      --shadow-lg: 0 20px 60px rgba(26,74,46,.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--text-dark); background: var(--white); line-height: 1.6; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 24px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--green-deep); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .nav-logo-text { font-family: var(--font-display); font-size: 1.4rem; color: var(--green-deep); font-weight: 900; }
+    .nav-back {
+      font-size: .9rem; font-weight: 600; color: var(--green-mid);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-back:hover { color: var(--green-deep); }
+
+    main { padding-top: 68px; }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: 1160px; margin: 0 auto; padding: 24px 24px 0;
+      font-size: .85rem; color: var(--text-soft);
+    }
+    .breadcrumb a { color: var(--green-mid); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* DETAIL HERO */
+    .detail-wrap {
+      max-width: 1160px; margin: 0 auto; padding: 32px 24px 0;
+      display: grid; grid-template-columns: 420px 1fr; gap: 48px;
+    }
+    .detail-img {
+      aspect-ratio: 1/1; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--green-pale), var(--green-mint));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+    }
+    .detail-badge {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--gold); color: var(--white);
+      font-size: .75rem; font-weight: 800; letter-spacing: .08em;
+      padding: 6px 16px; border-radius: 50px;
+    }
+    .detail-category {
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green-mid); margin-bottom: 10px;
+    }
+    .detail-name {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+      color: var(--green-deep); margin-bottom: 14px; line-height: 1.2;
+    }
+    .detail-desc { font-size: 1rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.7; }
+    .detail-benefits { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .benefit-tag {
+      background: var(--green-pale); color: var(--green-deep);
+      font-size: .78rem; font-weight: 600; padding: 5px 14px; border-radius: 50px;
+    }
+    .detail-audience {
+      font-size: .9rem; color: var(--text-soft); margin-bottom: 24px;
+      background: var(--green-mint); padding: 10px 16px; border-radius: var(--radius-sm);
+      display: inline-block;
+    }
+    .detail-price-row {
+      display: flex; align-items: center; gap: 20px; margin-bottom: 8px;
+      padding-top: 20px; border-top: 1px solid var(--border);
+    }
+    .detail-price { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--green-mid); }
+    .detail-price span { font-family: var(--font-body); font-size: .85rem; color: var(--text-soft); font-weight: 400; display: block; }
+    .btn-buy-lg {
+      background: var(--green-mid); color: var(--white); border: none;
+      padding: 14px 32px; border-radius: 50px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .btn-buy-lg:hover { background: var(--green-deep); transform: scale(1.03); }
+    .btn-hotline {
+      background: transparent; color: var(--green-deep); border: 1.5px solid var(--green-mid);
+      padding: 14px 28px; border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer;
+    }
+    .detail-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+
+    /* DETAIL BODY SECTIONS */
+    .detail-sections { max-width: 1160px; margin: 64px auto 0; padding: 0 24px 80px; }
+    .detail-block { margin-bottom: 44px; }
+    .detail-block h2 {
+      font-family: var(--font-display); font-size: 1.5rem; color: var(--green-deep);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .detail-block p { color: var(--text-mid); font-size: .98rem; line-height: 1.8; }
+    .ingredient-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .ingredient-table th { background: var(--green-deep); color: var(--white); text-align: left; padding: 12px 18px; font-size: .85rem; }
+    .ingredient-table td { padding: 12px 18px; font-size: .9rem; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+    .ingredient-table tr:last-child td { border-bottom: none; }
+    .ingredient-table tr:nth-child(even) td { background: var(--green-mint); }
+    .notice-box {
+      background: var(--gold-light); border-left: 4px solid var(--gold);
+      padding: 16px 20px; border-radius: var(--radius-sm); font-size: .9rem; color: var(--text-mid);
+    }
+
+    /* RELATED PRODUCTS */
+    .related-title { font-family: var(--font-display); font-size: 1.4rem; color: var(--green-deep); margin-bottom: 24px; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .related-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md);
+      overflow: hidden; transition: box-shadow .25s, transform .25s; cursor: pointer;
+    }
+    .related-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .related-img {
+      aspect-ratio: 4/3; background: linear-gradient(135deg, var(--green-pale), var(--green-mint));
+      display: flex; align-items: center; justify-content: center; font-size: 2.6rem;
+    }
+    .related-body { padding: 14px 16px; }
+    .related-name { font-size: .92rem; font-weight: 700; color: var(--green-deep); margin-bottom: 6px; }
+    .related-price { font-size: .85rem; color: var(--green-mid); font-weight: 700; }
+
+    footer {
+      background: var(--green-deep); color: rgba(255,255,255,.8);
+      text-align: center; padding: 28px 24px; font-size: .85rem;
+    }
+    footer a { color: var(--green-light); }
+
+    @media (max-width: 860px) {
+      .detail-wrap { grid-template-columns: 1fr; gap: 28px; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">Vita<span style="color:var(--green-light)">Green</span></div>
+  </a>
+  <a class="nav-back" href="index.html#products">← Quay lại danh sách sản phẩm</a>
+</nav>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Trang chủ</a> / <a href="index.html#products">Sản phẩm</a> / <span id="bcName">...</span>
+  </div>
+
+  <div id="detailRoot"></div>
+
+  <div class="detail-sections" id="extraSections"></div>
+</main>
+
+<footer>
+  <p>© 2025 VitaGreen Pharma. Thực phẩm chức năng không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.</p>
+  <p style="margin-top:8px"><a href="index.html#contact">Liên hệ tư vấn</a> · <a href="index.html#privacy">Chính sách bảo mật</a></p>
+</footer>
+
+<script src="products-data.js"></script>
+<script>
+  function getParam(name) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  function renderNotFound() {
+    document.getElementById('detailRoot').innerHTML =
+      '<div style="max-width:600px;margin:80px auto;text-align:center;padding:0 24px">' +
+      '<h1 style="font-family:var(--font-display);color:var(--green-deep);margin-bottom:16px">Không tìm thấy sản phẩm</h1>' +
+      '<p style="color:var(--text-soft);margin-bottom:24px">Sản phẩm bạn tìm không tồn tại hoặc đã bị gỡ bỏ.</p>' +
+      '<a href="index.html#products" style="background:var(--green-mid);color:#fff;padding:12px 28px;border-radius:50px;font-weight:700">Xem tất cả sản phẩm</a>' +
+      '</div>';
+  }
+
+  function render() {
+    var id = getParam('id');
+    var product = VITAGREEN_PRODUCTS.find(function(p) { return p.id === id; });
+    if (!product) { renderNotFound(); return; }
+
+    document.title = product.name + ' – VitaGreen';
+    document.getElementById('bcName').textContent = product.name;
+
+    var imgHtml = product.image
+      ? '<img src="' + product.image + '" alt="' + product.name + '" style="width:100%;height:100%;object-fit:cover" />'
+      : product.icon;
+
+    var badgeHtml = product.badge
+      ? '<div class="detail-badge" style="background:' + (product.badgeColor || 'var(--gold)') + '">' + product.badge + '</div>'
+      : '';
+
+    var benefitsHtml = product.benefits.map(function(b) {
+      return '<span class="benefit-tag">' + b + '</span>';
+    }).join('');
+
+    document.getElementById('detailRoot').innerHTML =
+      '<div class="detail-wrap">' +
+        '<div class="detail-img">' + badgeHtml + imgHtml + '</div>' +
+        '<div>' +
+          '<div class="detail-category">' + product.category + '</div>' +
+          '<h1 class="detail-name">' + product.name + '</h1>' +
+          '<p class="detail-desc">' + product.desc + '</p>' +
+          '<div class="detail-benefits">' + benefitsHtml + '</div>' +
+          '<div class="detail-audience">👤 Phù hợp: ' + product.audience + '</div>' +
+          '<div class="detail-price-row">' +
+            '<div class="detail-price">' + vgFormatPrice(product.price) + '<span>/ ' + product.unit + '</span></div>' +
+          '</div>' +
+          '<div class="detail-actions">' +
+            '<button class="btn-buy-lg" onclick="alert(\'Đặt hàng qua Hotline: 1800 1234\')">Mua ngay</button>' +
+            '<a class="btn-hotline" href="index.html#contact">Tư vấn miễn phí</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    var ingredientRows = product.ingredients.map(function(i) {
+      return '<tr><td>' + i.name + '</td><td>' + i.amount + '</td></tr>';
+    }).join('');
+
+    document.getElementById('extraSections').innerHTML =
+      '<div class="detail-block">' +
+        '<h2>📖 Giới thiệu chi tiết</h2>' +
+        '<p>' + product.longDesc + '</p>' +
+      '</div>' +
+      '<div class="detail-block">' +
+        '<h2>🧪 Thành phần chính</h2>' +
+        '<table class="ingredient-table">' +
+          '<thead><tr><th>Thành phần</th><th>Hàm lượng / hộp</th></tr></thead>' +
+          '<tbody>' + ingredientRows + '</tbody>' +
+        '</table>' +
+      '</div>' +
+      '<div class="detail-block">' +
+        '<h2>💡 Hướng dẫn sử dụng</h2>' +
+        '<p>' + product.usage + '</p>' +
+      '</div>' +
+      '<div class="detail-block">' +
+        '<h2>⚠️ Lưu ý khi sử dụng</h2>' +
+        '<div class="notice-box">' + product.caution + ' Thực phẩm này không phải là thuốc, không có tác dụng thay thế thuốc chữa bệnh.</div>' +
+      '</div>' +
+      '<div class="detail-block">' +
+        '<h2>🛒 Sản phẩm liên quan</h2>' +
+        '<div class="related-grid" id="relatedGrid"></div>' +
+      '</div>';
+
+    var related = VITAGREEN_PRODUCTS.filter(function(p) { return p.id !== product.id; })
+      .sort(function() { return Math.random() - 0.5; })
+      .slice(0, 4);
+
+    document.getElementById('relatedGrid').innerHTML = related.map(function(p) {
+      var ic = p.image ? '<img src="' + p.image + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover" />' : p.icon;
+      return '<a class="related-card" href="product.html?id=' + p.id + '">' +
+        '<div class="related-img">' + ic + '</div>' +
+        '<div class="related-body">' +
+          '<div class="related-name">' + p.name + '</div>' +
+          '<div class="related-price">' + vgFormatPrice(p.price) + '</div>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+
+    window.scrollTo(0, 0);
+  }
+
+  render();
+</script>
+</body>
+</html>
+ 
